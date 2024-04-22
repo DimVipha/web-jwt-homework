@@ -35,7 +35,7 @@ export default function TestJWT() {
         const body = {
             name:"updated",
         };
-      const res = await  fetch(`${process.env.NEXT_PUBLIC_DJANGO_API_URL}/api/products/${400}`,{
+      const res = await  fetch(`${process.env.NEXT_PUBLIC_DJANGO_API_URL}/api/products/${540}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -65,6 +65,14 @@ export default function TestJWT() {
         }).catch((error)=>{
             console.log(error)
         });
+    }    
+     //delete refresh token
+     const handleLogout = async()=>{
+        fetch(process.env.NEXT_PUBLIC_API_URL + "/refresh",{
+            method: "DELETE",
+            credentials:"include",
+            body: JSON.stringify({}),
+        }).then((res)=>res.json())
     }
   return (
     <main className='grid h-screen place-content-center'>
